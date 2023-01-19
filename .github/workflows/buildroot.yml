@@ -3,28 +3,12 @@ name: Buildroot
 on:
   push:
 
-env:
-  NAME: buildroot #镜像名称
-  TAG: 2022.11 #第二镜像标签
-
 jobs:
   docker:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: waterlemons2k
-          password: ${{ secrets.TOKEN }}
-          
-      - name: Build and push Docker Image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: |
-            waterlemons2k/${{ env.NAME }}
-            waterlemons2k/${{ env.NAME }}:${{ env.TAG }}
+    uses: WaterLemons2k/Docker/.github/workflows/docker.yml@main
+    with:
+      tags: |
+        waterlemons2k/buildroot
+        waterlemons2k/buildroot:hello-world
+    secrets:
+      TOKEN: ${{ secrets.TOKEN }}
