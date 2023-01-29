@@ -9,6 +9,6 @@ jobs:
     with:
       tags: |
         waterlemons2k/buildroot
-        waterlemons2k/buildroot:hello-world
+        waterlemons2k/buildroot:2022.11
     secrets:
       TOKEN: ${{ secrets.TOKEN }}
